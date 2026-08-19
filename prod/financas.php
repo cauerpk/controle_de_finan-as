@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
 
         <div>
-            <label for="guardar">Quanto da sua renda </label><span>*</span><br>
+            <label for="guardar">Quanto da sua renda você gostaria de guardar</label><span>*</span><br>
             <div class="radio">
                 <input type="radio" name="guardar" value="dez">
                 <label for="">10%</label>
