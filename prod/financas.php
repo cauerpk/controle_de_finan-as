@@ -1,9 +1,12 @@
 <?php
-$salario = $_POST['salario'];
-$gasto = $_POST['gasto'];
-$guardar = $_POST['guardar'];
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $salario = $_POST['salario'];
+    $gasto = $_POST['gasto'];
+    $guardar = $_POST['guardar'];
 
 
+}
 
 ?>
 
@@ -22,12 +25,14 @@ $guardar = $_POST['guardar'];
             <label for="salario">Quanto você Recebe por mês:</label><span class="error">*</span><br>
             <input type="number" name="salario" id="salario" placeholder="Ex: 2500.00" step="500.00" min="0">
         </div>
+
         <div>
             <label for="gasto">Quanto você Gasta por mês:</label><span class="error">*</span><br>
             <input type="number" name="gasto" id="gasto" placeholder="Ex: 1500.00" step="500.00" min="0">
         </div>
+
         <div>
-            <label for="guardar">Investimento indicado</label><span>*</span><br>
+            <label for="guardar">Quanto da sua renda </label><span>*</span><br>
             <div class="radio">
                 <input type="radio" name="guardar" value="dez">
                 <label for="">10%</label>
@@ -44,7 +49,10 @@ $guardar = $_POST['guardar'];
                 <input type="radio" name="guardar" value="outro">
             <label for="">Outro</label>
             </div>
-            
+        </div>    
+
+        <div>
+            <button type="submit">Próximo</button>
         </div>
     </form>   
 </body>

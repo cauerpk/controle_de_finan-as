@@ -45,11 +45,11 @@ if(count($_POST) > 0){
         </div>
         <div>
             <label for="">Telefone:</label>
-            <input name="telefone" type="text"><br>
+            <input name="telefone" type="tel" placeholder="(47) 99999-9999"><br>
         </div>
         <div>
             <label for="">Data de nascimento:</label>
-            <input name="nascimento" type="text"><br>
+            <input name="nascimento" type="date"><br>
         </div>
         <button type="button" onclick="window.location.href='./prod/financas.php'">
             Enviar dados
