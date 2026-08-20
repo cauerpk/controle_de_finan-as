@@ -27,7 +27,7 @@ if(count($_POST) > 0){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style/style.css">
 </head>
 <body>
     <nav>
@@ -51,7 +51,7 @@ if(count($_POST) > 0){
             <label for="">Data de nascimento:</label>
             <input name="nascimento" type="date"><br>
         </div>
-        <button type="button" onclick="window.location.href='./prod/financas.php'">
+        <button type="button" onclick="window.location.href='./login_financas.php'">
             Enviar dados
         </button>
     </form>
