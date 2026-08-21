@@ -13,9 +13,9 @@ if(count($_POST) > 0){
         echo "O campo E-mail deve ser preenchido corretamente";
     }if($erro){
         echo "<p><b>$erro</b></p>";
-    }if(strlen($telefone) != 11){
+    }if(!empty($telefone)&&strlen($telefone) != 11){
         echo "Preencha o campo telefone corretamente no padrão (48) 99999-9999";
-    }if(strlen($nascimento) < 8 || strlen($nascimento) > 8){
+    }if(!empty($nascimento) && $nascimento != null){
         echo "Preencha a data de nascimento corretamnete no padrão dd/mm/aaaa";
     }
 }
@@ -51,9 +51,7 @@ if(count($_POST) > 0){
             <label for="">Data de nascimento:</label>
             <input name="nascimento" type="date"><br>
         </div>
-        <button type="button" onclick="window.location.href='./login_financas.php'">
-            Enviar dados
-        </button>
+        <button type="submit" type="button" onclick="window.location.href='./login_financas.php'">salvar</button>
     </form>
 </body>
 </html>

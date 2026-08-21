@@ -11,18 +11,18 @@
         <div>
             <label for="guardar">Quanto da sua renda você gostaria de guardar</label><span>*</span><br>
             <div class="radio">
-                <input type="radio" name="guardar" value="dez" <?php echo "R$ ", $_POST['salario'] * 0.10, ",00"; ?>>
-                <label for="">10%</label>
+                <input type="radio" name="guardar" value="dez" >
+                <label for="">10% <?php echo "R$ ", $_POST['salario'] * 0.10, ",00"; ?></label>
             </div>
 
             <div class="radio">
-                <input type="radio" name="guardar" value="vinte" <?php echo "R$ ", $_POST['salario'] * 0.20, ",00"; ?>>
-                <label for="">20%</label>
+                <input type="radio" name="guardar" value="vinte" >
+                <label for="">20% <?php echo "R$ ", $_POST['salario'] * 0.20, ",00"; ?></label>
             </div>
 
             <div class="radio">
-                <input type="radio" name="guardar" value="trinta" <?php echo "R$ ", $_POST['salario'] * 0.30, ",00"; ?>>
-                <label for="">30%</label>
+                <input type="radio" name="guardar" value="trinta" >
+                <label for="">30% <?php echo "R$ ", $_POST['salario'] * 0.30, ",00"; ?></label>
             </div>
 
             <div class="radio">

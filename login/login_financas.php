@@ -48,9 +48,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label for="gasto">Quanto você Gasta por mês:</label><span class="error">*</span><br>
             <input required type="number" name="gasto" id="gasto" placeholder="Ex: 1500.00" step="500.00" min="0">
         </div>  
-    </form>   
+            <div>
+                <button name="guardar" type="submit">Salvar</button>
+            </div>
+    </form> 
+    
     <div>
-        <button name="guardar" type="submit" onclick="window.location.href='./login_investimento.php'">Próximo</button>
+        <button type="button" onclick="window.location.href='./login_investimento.php'">Proximo</button>
     </div>
 </body>
 </html>
