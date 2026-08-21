@@ -1,3 +1,37 @@
+<?php 
+
+include 'login_financas.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $salario = $_POST['salario'];
+    $gasto = $_POST['gasto'];
+    $guardar = $_POST['guardar'];
+
+    if($salario <= 2000){
+        
+    }
+    if($salario > 2000 && $salario <= 4000){
+
+    }
+    if($salario > 4000 && $salario <= 7000){
+
+    }
+    if($salario > 7000 && $salario <= 12000){
+
+    }
+    if($salario > 12000 && $salario <= 20000){
+
+    }
+    if($salario >20000){
+
+    }
+
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,6 +64,14 @@
             <label for="">Outro</label>
             </div>
         </div>
+
+        <div>
+            <button type="submit">Salvar</button>
+        </div>
     </form>
+
+    <div>
+        <button onclick="window.location.href='./'">Salvar</button>
+    </div>
 </body>
 </html>

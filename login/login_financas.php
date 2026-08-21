@@ -6,22 +6,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $guardar = $_POST['guardar'];
 
     if($salario <= 2000){
-        
+        echo "";
     }
     if($salario > 2000 && $salario <= 4000){
-
+        echo "";
     }
     if($salario > 4000 && $salario <= 7000){
-
+        echo "";
     }
     if($salario > 7000 && $salario <= 12000){
-
+        echo "";
     }
     if($salario > 12000 && $salario <= 20000){
-
+        echo "";
     }
     if($salario >20000){
-
+        echo "";
     }
 
 }
