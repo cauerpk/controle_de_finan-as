@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     }
     if($salario >20000){
-
+    
     }
 
 }
