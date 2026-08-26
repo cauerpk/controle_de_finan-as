@@ -1,14 +1,12 @@
 <?php 
 
-include 'login_financas.php';
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $salario = $_POST['salario'];
     $gasto = $_POST['gasto'];
     $guardar = $_POST['guardar'];
 
     if($salario <= 2000){
-        
+            
     }
     if($salario > 2000 && $salario <= 4000){
 
@@ -46,17 +44,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label for="guardar">Quanto da sua renda você gostaria de guardar</label><span>*</span><br>
             <div class="radio">
                 <input type="radio" name="guardar" value="dez" >
-                <label for="">10% <?php echo "R$ ", $_POST['salario'] * 0.10, ",00"; ?></label>
+                <label for="">10% <?php //echo "R$ ", $_POST['salario'] * 0.10, ",00"; //?></label>
             </div>
 
             <div class="radio">
                 <input type="radio" name="guardar" value="vinte" >
-                <label for="">20% <?php echo "R$ ", $_POST['salario'] * 0.20, ",00"; ?></label>
+                <label for="">20% <?php //echo "R$ ", $_POST['salario'] * 0.20, ",00"; //?></label>
             </div>
 
             <div class="radio">
                 <input type="radio" name="guardar" value="trinta" >
-                <label for="">30% <?php echo "R$ ", $_POST['salario'] * 0.30, ",00"; ?></label>
+                <label for="">30% <?php //echo "R$ ", $_POST['salario'] * 0.30, ",00"; //?></label>
             </div>
 
             <div class="radio">
