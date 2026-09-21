@@ -1,6 +1,10 @@
 <?php 
-$erro = false;
+
 if(count($_POST) > 0){
+
+    include('../conexão/conexao.php');
+
+    $erro = false;
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $telefone = $_POST['telefone'];
@@ -15,8 +19,20 @@ if(count($_POST) > 0){
         echo "<p><b>$erro</b></p>";
     }if(!empty($telefone)&&strlen($telefone) != 11){
         echo "Preencha o campo telefone corretamente no padrão (48) 99999-9999";
-    }if(!empty($nascimento) && $nascimento != null){
+    }if(empty($nascimento)){
         echo "Preencha a data de nascimento corretamnete no padrão dd/mm/aaaa";
+    }
+    if($erro){
+        "<p><b>ERRO: </b></p>" . $erro;
+    }else{
+        $sql_code = "INSERT INTO clientes (nome, email, telefone, nascimento, data) 
+        VALUE ('$nome', '$email', '$telefone', '$nascimento', NOW())";
+        $deu_certo = $mysqli->query($sql_code) or die($mysqli->error);
+
+        if($deu_certo){
+            echo "Cadastro executado com sucesso!";
+            unset($_POST);
+        }
     }
 }
 ?>
