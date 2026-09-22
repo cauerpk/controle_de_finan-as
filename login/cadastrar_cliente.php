@@ -2,7 +2,7 @@
 
 if(count($_POST) > 0){
 
-    include('../conexão/conexao.php');
+    include('../conexao/conexao.php');
 
     $erro = false;
     $nome = $_POST['nome'];
@@ -25,7 +25,7 @@ if(count($_POST) > 0){
     if($erro){
         "<p><b>ERRO: </b></p>" . $erro;
     }else{
-        $sql_code = "INSERT INTO clientes (nome, email, telefone, nascimento, data) 
+        $sql_code = "INSERT INTO clientes (nome, email, telefone, nascimento, cadastro) 
         VALUE ('$nome', '$email', '$telefone', '$nascimento', NOW())";
         $deu_certo = $mysqli->query($sql_code) or die($mysqli->error);
 
