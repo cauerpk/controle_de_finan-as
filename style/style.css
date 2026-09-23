@@ -152,3 +152,128 @@ button:hover {
         font-size: 24px;
     }
 }
+
+/* ===== LISTA DE CLIENTES ===== */
+
+.lista-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.lista-info {
+    text-align: center;
+    color: var(--cinza-claro);
+    margin-bottom: 25px;
+}
+
+.tabela-container {
+    width: 100%;
+    overflow-x: auto;
+    background: var(--azul-card);
+    border-radius: 12px;
+    border: 1px solid rgba(212, 165, 55, 0.15);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px;
+}
+
+thead {
+    background: var(--azul-hover);
+}
+
+th {
+    padding: 16px 14px;
+    text-align: left;
+    color: var(--dourado);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+td {
+    padding: 15px 14px;
+    color: var(--branco);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 14px;
+}
+
+tbody tr {
+    transition: 0.2s;
+}
+
+tbody tr:hover {
+    background: rgba(28, 63, 102, 0.45);
+}
+
+/* ===== AÇÕES ===== */
+
+.acoes {
+    display: flex;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.acoes a {
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-editar {
+    background: var(--dourado);
+    color: var(--azul-bg);
+}
+
+.btn-editar:hover {
+    background: var(--dourado-hover);
+    transform: translateY(-1px);
+}
+
+.btn-deletar {
+    background: transparent;
+    color: var(--erro);
+    border: 1px solid var(--erro);
+}
+
+.btn-deletar:hover {
+    background: var(--erro);
+    color: var(--branco);
+}
+
+/* ===== NENHUM CLIENTE ===== */
+
+.sem-clientes {
+    text-align: center;
+    padding: 35px !important;
+    color: var(--cinza-claro);
+    font-size: 15px;
+}
+
+/* ===== RESPONSIVO ===== */
+
+@media (max-width: 700px) {
+    body {
+        padding: 25px 15px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .lista-info {
+        font-size: 14px;
+    }
+
+    .tabela-container {
+        border-radius: 8px;
+    }
+}
