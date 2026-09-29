@@ -15,6 +15,9 @@ $num_clientes = $query_clientes->num_rows;
     <link rel="stylesheet" href="../style/style.css">
 </head>
 <body>
+    <nav>
+        <a href="cadastrar_cliente.php">Voltar para a lista</a>
+    </nav>
     <div class="lista-container">
         <h1>Lista de Clientes</h1>
         <p class="lista-info">Estes são os clientes cadastrados no sisitema</p>
@@ -49,19 +52,20 @@ $num_clientes = $query_clientes->num_rows;
                                 }
                                 $nascimento = "Não informada";
                                 if(!empty($cliente['nascimento'])){
-                                    $tmp = explode('-', $cliente['nascimento']);
-                                }?>
+                                    $nascimento = implode('/', array_reverse(explode('-', $cliente['nascimento'])));
+                                }
+                                $data_cadastro = date("d/m/Y H:i", strtotime($cliente['cadastro'])) ;?>
                         <tr>
                             <td><?php echo $cliente['id']; ?></td>
                             <td><?php echo $cliente['nome']; ?></td>
                             <td><?php echo $cliente['email']; ?></td>
                             <td><?php echo $telefone; ?></td>
-                            <td><?php echo $cliente['nascimento']; ?></td>
-                            <td><?php echo $cliente['cadastro']; ?></td>
+                            <td><?php echo $nascimento; ?></td>
+                            <td><?php echo $data_cadastro; ?></td>
                             <td>
                                 <div class="acoes">
-                                    <a href="editar_clientes.php" class="btn-editar">Editar &#9999;</a>
-                                    <a href="deletar_clientes.php" class="btn-deletar">Deletar &#128465;</a>   
+                                    <a href="editar_clientes.php?id=<?php echo $cliente['id']; ?>" class="btn-editar">Editar &#9999;</a>
+                                    <a href="deletar_clientes.php?id=<?php echo $cliente['id']; ?>" class="btn-deletar">Deletar &#128465;</a>   
                                 </div>
                             </td>
                         </tr>
