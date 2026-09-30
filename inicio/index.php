@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        /* =========================
-   CONFIGURAÇÕES GERAIS
-========================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -16,38 +12,126 @@
 }
 
 :root {
-    --bg: #080b14;
-    --bg-card: #111625;
-    --bg-card-hover: #171d30;
+    --bg: #050816;
     --primary: #6366f1;
-    --primary-hover: #4f46e5;
-    --secondary: #22d3ee;
+    --cyan: #22d3ee;
     --text: #ffffff;
-    --text-muted: #a7afc2;
-    --border: rgba(255, 255, 255, 0.08);
+    --muted: #a7afc2;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
     font-family: Arial, Helvetica, sans-serif;
     background: var(--bg);
     color: var(--text);
-    line-height: 1.6;
     min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
 }
 
 
 /* =========================
-   TÍTULO PRINCIPAL
+   FUNDO ANIMADO
+========================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at var(--mouse-x, 50%) var(--mouse-y, 30%),
+            rgba(99, 102, 241, 0.18),
+            transparent 25%
+        );
+
+    pointer-events: none;
+    z-index: -1;
+
+    transition: background 0.15s ease;
+}
+
+
+/* Luzes decorativas */
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    width: 500px;
+    height: 500px;
+
+    top: -200px;
+    left: -150px;
+
+    background: rgba(99, 102, 241, 0.15);
+
+    filter: blur(120px);
+
+    border-radius: 50%;
+
+    animation: floatLight 8s ease-in-out infinite alternate;
+
+    pointer-events: none;
+    z-index: -2;
+}
+
+@keyframes floatLight {
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(250px, 180px);
+    }
+}
+
+
+/* Segunda luz */
+
+.title::before {
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    background: rgba(34, 211, 238, 0.10);
+
+    filter: blur(100px);
+
+    border-radius: 50%;
+
+    z-index: -1;
+}
+
+
+/* =========================
+   TÍTULO
 ========================= */
 
 .title {
+    position: relative;
+
     max-width: 1000px;
-    margin: 90px auto 25px;
+
+    margin: 100px auto 25px;
+
     padding: 0 25px;
 
     text-align: center;
-    font-size: clamp(2rem, 5vw, 4rem);
-    line-height: 1.1;
+
+    font-size: clamp(2.2rem, 5vw, 4.5rem);
+
+    line-height: 1.05;
+
     font-weight: 800;
 
     background: linear-gradient(
@@ -59,6 +143,20 @@ body {
 
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+
+    animation: titleAppear 1s ease forwards;
+}
+
+@keyframes titleAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
@@ -68,44 +166,100 @@ body {
 
 .subtitle {
     max-width: 800px;
-    margin: 0 auto 60px;
+
+    margin: 0 auto 70px;
+
     padding: 0 25px;
 
     text-align: center;
-    color: var(--text-muted);
+
+    color: var(--muted);
 
     font-size: 1.2rem;
+
     font-weight: 400;
+
+    animation: fadeUp 1s ease 0.2s both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
 /* =========================
-   CARD PRINCIPAL
+   CARD CRM
 ========================= */
 
 .top {
+    position: relative;
+
     max-width: 1000px;
+
     margin: auto;
+
     padding: 45px;
 
-    background: linear-gradient(
-        145deg,
-        #111625,
-        #0d111d
-    );
+    background: rgba(17, 22, 37, 0.65);
 
-    border: 1px solid var(--border);
-    border-radius: 24px;
+    backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 25px;
 
     box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.35);
+        0 30px 80px rgba(0, 0, 0, 0.4);
 
-    transition: 0.3s;
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+
+    animation: fadeUp 1s ease 0.4s both;
 }
 
 .top:hover {
-    transform: translateY(-4px);
-    background: var(--bg-card-hover);
+    transform: translateY(-8px);
+
+    border-color: rgba(99, 102, 241, 0.5);
+}
+
+
+/* Brilho do card */
+
+.top::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -1px;
+
+    border-radius: inherit;
+
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(99, 102, 241, 0.3),
+        transparent
+    );
+
+    opacity: 0;
+
+    transition: 0.4s;
+
+    pointer-events: none;
+}
+
+.top:hover::before {
+    opacity: 1;
 }
 
 
@@ -114,24 +268,24 @@ body {
 ========================= */
 
 .top h3 {
-    margin-bottom: 30px;
-
     font-size: 1.5rem;
-    line-height: 1.3;
 
-    color: #ffffff;
+    line-height: 1.4;
+
+    margin-bottom: 30px;
 }
 
 
 /* =========================
-   LISTA DE BENEFÍCIOS
+   BENEFÍCIOS
 ========================= */
 
 .top ul {
     list-style: none;
 
     display: grid;
-    gap: 18px;
+
+    gap: 15px;
 }
 
 .top li {
@@ -139,20 +293,22 @@ body {
 
     padding: 18px 20px 18px 55px;
 
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.035);
 
-    border: 1px solid var(--border);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+
     border-radius: 14px;
 
-    color: var(--text-muted);
+    color: var(--muted);
 
-    transition: 0.25s;
+    transition: 0.3s;
 }
 
 .top li::before {
     content: "✓";
 
     position: absolute;
+
     left: 18px;
     top: 50%;
 
@@ -162,57 +318,78 @@ body {
     height: 25px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     border-radius: 50%;
 
-    background: var(--primary);
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--cyan)
+    );
+
     color: white;
 
     font-weight: bold;
 }
 
 .top li:hover {
-    border-color: var(--primary);
-    transform: translateX(5px);
+    transform: translateX(8px);
+
+    background: rgba(99, 102, 241, 0.08);
+
+    border-color: rgba(99, 102, 241, 0.3);
+
+    color: white;
 }
 
 
 /* =========================
-   ÁREA DE CONTATO
+   CONTATO
 ========================= */
 
 .contato {
     max-width: 1000px;
 
-    margin: 60px auto 30px;
-    padding: 55px 30px;
+    margin: 70px auto 30px;
+
+    padding: 60px 30px;
 
     text-align: center;
 
-    border-radius: 24px;
+    position: relative;
+
+    overflow: hidden;
 
     background:
         radial-gradient(
-            circle at top,
-            rgba(99, 102, 241, 0.25),
+            circle at center,
+            rgba(99, 102, 241, 0.18),
             transparent 60%
         ),
-        #111625;
+        rgba(17, 22, 37, 0.7);
 
-    border: 1px solid var(--border);
+    backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 25px;
 }
 
 .contato h2 {
     font-size: 2rem;
+
     margin-bottom: 10px;
 }
 
 .contato h3 {
-    color: var(--text-muted);
+    color: var(--muted);
+
     font-weight: 400;
-    margin-bottom: 25px;
+
+    margin-bottom: 30px;
 }
 
 
@@ -222,33 +399,37 @@ body {
 
 .whatsapp {
     border: none;
+
+    padding: 16px 35px;
+
     border-radius: 12px;
 
     background: #25d366;
 
-    padding: 15px 35px;
-
     cursor: pointer;
 
-    box-shadow:
-        0 10px 30px rgba(37, 211, 102, 0.2);
+    transition: 0.3s;
 
-    transition: 0.25s;
+    position: relative;
+
+    overflow: hidden;
 }
 
 .whatsapp:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px) scale(1.03);
 
     box-shadow:
-        0 15px 35px rgba(37, 211, 102, 0.35);
+        0 15px 40px rgba(37, 211, 102, 0.3);
 }
 
 .whatsapp a {
     color: white;
+
     text-decoration: none;
 
+    font-weight: bold;
+
     font-size: 1rem;
-    font-weight: 700;
 }
 
 
@@ -259,37 +440,27 @@ body {
 .midia {
     max-width: 1000px;
 
-    margin: 30px auto 60px;
-    padding: 25px;
+    margin: 40px auto;
+
+    padding: 30px;
 
     text-align: center;
 
-    color: var(--text-muted);
+    color: var(--muted);
 
-    border-top: 1px solid var(--border);
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
 }
-
-.midia h4 {
-    font-size: 1rem;
-    font-weight: 400;
-}
-
-
-/* =========================
-   INSTAGRAM
-========================= */
 
 .intagrm {
     display: block;
 
-    margin: 0 auto 60px;
+    margin: 0 auto 70px;
+
+    padding: 13px 30px;
 
     border: none;
+
     border-radius: 12px;
-
-    padding: 12px 30px;
-
-    cursor: pointer;
 
     background: linear-gradient(
         45deg,
@@ -298,18 +469,21 @@ body {
         #8134af
     );
 
-    transition: 0.25s;
+    cursor: pointer;
+
+    transition: 0.3s;
 }
 
 .intagrm:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px) scale(1.03);
 
     box-shadow:
-        0 10px 30px rgba(221, 42, 123, 0.25);
+        0 15px 35px rgba(221, 42, 123, 0.3);
 }
 
 .intagrm a {
     color: white;
+
     text-decoration: none;
 
     font-weight: bold;
@@ -317,22 +491,26 @@ body {
 
 
 /* =========================
-   RESPONSIVIDADE
+   MOBILE
 ========================= */
 
 @media (max-width: 700px) {
 
     .title {
-        margin-top: 50px;
+        margin-top: 60px;
+
+        font-size: 2.4rem;
     }
 
     .subtitle {
         font-size: 1rem;
-        margin-bottom: 35px;
+
+        margin-bottom: 40px;
     }
 
     .top {
         margin: 0 15px;
+
         padding: 25px;
     }
 
@@ -340,13 +518,10 @@ body {
         font-size: 1.25rem;
     }
 
-    .top li {
-        padding: 15px 15px 15px 50px;
-    }
-
     .contato {
-        margin: 40px 15px 25px;
-        padding: 40px 20px;
+        margin: 40px 15px;
+
+        padding: 45px 20px;
     }
 
     .contato h2 {
@@ -358,7 +533,7 @@ body {
 <body>
     <h1 class="title">Toda empresa precisa de organização e um processo definido e organizados para funcionar de forma eficiente e leve</h1>
     <br>
-    <h2 class="subtitle">Pensando nisso a/o [nome do sistema] é a escolha ideal para empresas que precisam de processos mais organizados</h2>
+    <h2 class="subtitle">Pensando nisso a NexaFlow é a escolha ideal para empresas que precisam de processos mais organizados</h2>
     <br>
     <div class="top">
         <h3>Nós oferecemos uma maior organização e automação dos seus processos com nosso CRM atualizado</h3>
@@ -382,3 +557,19 @@ body {
     </div>
 </body><button class="intagrm"><a href="http://">Instagram</a></button>
 </html>
+
+<script>
+
+const body = document.body;
+
+document.addEventListener("mousemove", (event) => {
+
+    const x = (event.clientX / window.innerWidth) * 100;
+    const y = (event.clientY / window.innerHeight) * 100;
+
+    body.style.setProperty("--mouse-x", `${x}%`);
+    body.style.setProperty("--mouse-y", `${y}%`);
+
+});
+
+</script>
